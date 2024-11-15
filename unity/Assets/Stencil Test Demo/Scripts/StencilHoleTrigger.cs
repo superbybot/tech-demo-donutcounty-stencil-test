@@ -17,7 +17,10 @@ namespace StencilTestDemo.Scripts
         {
             other.transform.gameObject.layer = LayerMask.NameToLayer("Inside Hole");
             Rigidbody rb = other.transform.GetComponent<Rigidbody>();
-            rb.WakeUp();
+            if (rb.IsSleeping())
+            {
+                rb.WakeUp();
+            }
         }
 
         private void OnTriggerExit(Collider other)
